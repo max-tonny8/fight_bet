@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.main`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
 
@@ -16,6 +17,14 @@ export const Wrapper = styled.main`
     flex-direction: column;
     align-items: center;
     gap: 40px;
+  }
+
+
+  .game-member {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 8px;
   }
 
   .share-text {

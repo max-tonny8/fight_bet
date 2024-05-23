@@ -1,8 +1,8 @@
 import { Wrapper } from "./index.styled";
 
-const MainBtn = ({ title }: { title: string }) => {
+const MainBtn = ({ title, $width }: { title: string; $width: string }) => {
   return (
-    <Wrapper>
+    <Wrapper $width={$width}>
       <p>{title}</p>
     </Wrapper>
   );

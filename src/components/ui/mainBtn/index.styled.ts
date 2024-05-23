@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{$width: string}>`
+    width: ${({$width}) => $width};
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
-    border-radius: 50%;
+    font-size: 14px;
+    padding: 8px 24px;
+    border-radius: 22px;
     background-color: #000;
     color: #fff;
 `;

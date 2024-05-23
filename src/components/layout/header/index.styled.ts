@@ -8,4 +8,5 @@ export const Wrapper = styled.div`
     align-items: center;
     padding: 12px 32px;
     background-color: #fff;
+    gap: 12px;
 `;

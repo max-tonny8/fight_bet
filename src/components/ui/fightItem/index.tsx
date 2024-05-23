@@ -7,14 +7,16 @@ const FightItem = ({ src, amount, gain, name }: FightItemType) => {
   return (
     <Wrapper>
       <div className="game-control">
-        <Image src={src} alt="No image..." />
+        <Image src={src} alt="No image..." width={150} height={150} />
         <div className="setting">
           <InputBox />
           <MainBtn 
             title="Approve USDC to place your bet"
+            $width="80%"
           />
           <MainBtn 
             title={`Place Bet on ${name}`}
+            $width="60%"
           />
         </div>
       </div>

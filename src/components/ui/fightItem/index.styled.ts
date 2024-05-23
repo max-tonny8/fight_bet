@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 32px;
     gap: 70px;
 
     .game-control {
@@ -14,7 +13,7 @@ export const Wrapper = styled.div`
         gap: 40px;
     }
 
-    .game-setting {
+    .game-control .setting {
         display: flex;
         flex-direction: column;
         align-items: center;

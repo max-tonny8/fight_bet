@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import {Wrapper} from "./page.styled"
 import Navbar from "@/components/layout/header";

@@ -8,13 +8,13 @@ const GameItem = () => {
       <div className="line"></div>
       <div className="game-member">
         <FightItem 
-            src="./images/member1"
+            src="/images/member1.png"
             name="Jack Paul"
             amount={0}
             gain={0}
         />
         <FightItem 
-            src="./images/member2"
+            src="/images/member2.png"
             name="Mike Tyson"
             amount={100}
             gain={100}
