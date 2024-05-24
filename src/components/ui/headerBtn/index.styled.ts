@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   border: solid 1px #cfcfcf;
   box-shadow: 1px 1px 1px 0px #dbdbdb;
   white-space: nowrap;
+  cursor: pointer;
 
   .title {
     display: flex;
