@@ -11,7 +11,7 @@ const ToggleNav = () => {
 
   return (
     <Wrapper>
-      <div className="close-icon" onClick={() => setToggled(!isToggled)}>
+      <div className="close-icon">
         <HiX size={30} />
       </div>
       <h1>Fight Cash</h1>
@@ -26,8 +26,13 @@ const ToggleNav = () => {
           }
           title="Polygon"
           icon={<HiChevronDown size={12} />}
+          onClick={() => setToggled(!isToggled)}
         />
-        <HeaderBtn title="0x345eder2..." icon={<HiChevronDown size={12} />} />
+        <HeaderBtn
+          title="0x345eder2..."
+          icon={<HiChevronDown size={12} />}
+          onClick={() => setToggled(!isToggled)}
+        />
       </div>
     </Wrapper>
   );
