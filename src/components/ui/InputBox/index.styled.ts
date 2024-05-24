@@ -10,7 +10,8 @@ export const Wrapper = styled.input`
   border: solid 1px #000;
   background-color: #fff;
   color: #000;
-  font-size: 12px;
+  text-align: center;
+  font-size: 13px;
   font-family: sans-serif;
   font-weight: 400;
 `;

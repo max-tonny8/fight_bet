@@ -1,22 +1,7 @@
 /* @font-face {
   font-family: "MS Sans Serif Bold";
   src: url("../assets/fonts/microsoftsansserif.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Saira";
-  src: url("../assets/fonts/Saira-VariableFont_wdth,wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Manrope";
-  src: url("../assets/fonts/Manrope-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Press Start 2P";
-  src: url("../assets/fonts/PressStart2P-Regular.ttf") format("truetype");
-} */
+}*/
 
 html,
 body {
@@ -34,4 +19,5 @@ body {
 
 a {
   text-decoration: none;
+  color: blue;
 }

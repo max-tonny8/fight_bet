@@ -1,7 +1,7 @@
 import { Wrapper } from "./index.styled";
 
 const InputBtn = () => {
-  return <Wrapper />;
+  return <Wrapper placeholder="0" />;
 };
 
 export default InputBtn;
