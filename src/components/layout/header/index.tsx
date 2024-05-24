@@ -5,6 +5,7 @@ import { Icon } from "@/components/ui/icon";
 import { HiChevronDown, HiOutlineMenu } from "react-icons/hi";
 import { useAppContext } from "@/context/AppContext";
 import ToggleNav from "@/components/ui/toggleNav";
+import Image from "next/image";
 
 const Navbar = () => {
   const { isToggled, setToggled } = useAppContext();
@@ -17,7 +18,12 @@ const Navbar = () => {
         <div className="connect-btn">
           <HeaderBtn
             avatar={
-              <Icon name="Polygon" width={20} height={20} viewBox="0 0 20 20" />
+              <Image
+                src="/icons/polygon-24.png"
+                width={24}
+                height={24}
+                alt="no..."
+              />
             }
             title="Polygon"
             icon={<HiChevronDown size={12} />}

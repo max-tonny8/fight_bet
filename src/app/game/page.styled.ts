@@ -143,6 +143,19 @@ export const Wrapper = styled.main`
     gap: 20px;
   }
 
+  .game-condition .state p:first-child span:last-child {
+    padding-left: 22px;
+  }
+
+  .main .game-condition .state .led {
+    position: absolute;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: green;
+    margin-left: 3px;
+  }
+
   .game-condition .state .chain-part {
     display: flex;
     flex-direction: column;
