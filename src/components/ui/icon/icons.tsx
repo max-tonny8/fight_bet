@@ -19,7 +19,7 @@ export const Icon = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {Icons[name!](width)}
+      {Icons[name!]()}
     </svg>
   );
 };

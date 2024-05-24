@@ -99,7 +99,7 @@ export const Wrapper = styled.main`
 
   @media (max-width: 375px) {
     .container {
-      width: 300px;
+      width: 360px;
       display: flex;
       margin: auto;
       padding: 32px;
