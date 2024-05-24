@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 150px;
   height: 42px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 5px 12px;
   font-size: 13px;
@@ -13,11 +13,12 @@ export const Wrapper = styled.div`
   color: #000;
   border: solid 1px #cfcfcf;
   box-shadow: 1px 1px 1px 0px #dbdbdb;
+  white-space: nowrap;
 
   .title {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 20px;
   }
 `;
