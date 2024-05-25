@@ -1,6 +1,7 @@
 interface AppContextType {
   isToggled: boolean;
-  amount: number;
+  amount1: number;
+  amount2: number;
   isApprove: boolean;
   totalBetAmount1: number;
   totalBetAmount2: number;
@@ -8,10 +9,11 @@ interface AppContextType {
   totalPotAmount1: number;
   totalPotAmount2: number;
   setConnect: (state: boolean) => void;
-  setAmount: (state: number) => void;
+  setAmount1: (state: number) => void;
+  setAmount2: (state: number) => void;
   setToggled: (state: boolean) => void;
-  handleApprove: () => void;
-  handleBet: () => void;
+  handleApprove: (state: string) => void;
+  handleBet: (state: string) => void;
 }
 interface HeaderBtnType {
   avatar?: React.ReactNode;
@@ -26,4 +28,8 @@ interface FightItemType {
   gain: number;
   name: string;
   totalBetAmount: number;
+  amount: number;
+  setAmount: (state: number) => void;
+  handleApprove: (state: string) => void;
+  handleBet: (state: string) => void;
 }

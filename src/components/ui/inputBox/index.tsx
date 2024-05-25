@@ -1,9 +1,13 @@
 import { useAppContext } from "@/context/AppContext";
 import { Wrapper } from "./index.styled";
 
-const InputBtn = () => {
-  const { amount, setAmount } = useAppContext();
-
+const InputBtn = ({
+  amount,
+  setAmount,
+}: {
+  amount: number;
+  setAmount: (state: number) => void;
+}) => {
   const handleInputChange = (event: any) => {
     setAmount(event.target.value);
   };
@@ -13,7 +17,7 @@ const InputBtn = () => {
       type="number"
       placeholder="0"
       value={amount}
-      onClick={handleInputChange}
+      onChange={handleInputChange}
     />
   );
 };

@@ -4,8 +4,17 @@ import InputBox from "../inputBox";
 import MainBtn from "../mainBtn";
 import { useAppContext } from "@/context/AppContext";
 
-const FightItem = ({ src, gain, name, totalBetAmount }: FightItemType) => {
-  const { isApprove, handleApprove, handleBet } = useAppContext();
+const FightItem = ({
+  src,
+  gain,
+  name,
+  totalBetAmount,
+  amount,
+  setAmount,
+  handleApprove,
+  handleBet,
+}: FightItemType) => {
+  const { isApprove } = useAppContext();
 
   return (
     <Wrapper>
@@ -15,18 +24,18 @@ const FightItem = ({ src, gain, name, totalBetAmount }: FightItemType) => {
           <Image src={src} alt="No image..." width={220} height={180} />
         </div>
         <div className="setting">
-          <InputBox />
-          {isApprove ? (
+          <InputBox amount={amount} setAmount={setAmount} />
+          {!isApprove ? (
             <MainBtn
               title="Approve USDC to place your bet"
               $width="290px"
-              onClick={handleApprove}
+              onClick={() => handleApprove(name)}
             />
           ) : (
             <MainBtn
               title={`Place Bet on ${name}`}
               $width="230px"
-              onClick={handleBet}
+              onClick={() => handleBet(name)}
             />
           )}
         </div>

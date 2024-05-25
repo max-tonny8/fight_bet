@@ -10,7 +10,8 @@ const AppProvider = ({
   children: React.ReactNode;
 }>) => {
   const [isToggled, setToggled] = useState(false);
-  const [amount, setAmount] = useState<number>(0);
+  const [amount1, setAmount1] = useState<number>(0);
+  const [amount2, setAmount2] = useState<number>(0);
   const [fighter, setFighter] = useState<number>(1);
   const [isApprove, setApprove] = useState<boolean>(false);
   const [gain, setGain] = useState<string>("0");
@@ -22,19 +23,20 @@ const AppProvider = ({
   let totalPotAmount1: number = 0;
   let totalPotAmount2: number = 0;
 
-  const handleApprove = () => {
-    console.log("-----> handleApprove");
+  const handleApprove = (name: string) => {
+    console.log("-----> handleApprove", name);
   };
 
-  const handleBet = () => {
-    console.log("-----> handleBet");
+  const handleBet = (name: string) => {
+    console.log("-----> handleBet", name);
   };
 
   return (
     <AppContext.Provider
       value={{
         isToggled,
-        amount,
+        amount1,
+        amount2,
         isApprove,
         totalBetAmount1,
         totalBetAmount2,
@@ -42,7 +44,8 @@ const AppProvider = ({
         totalPotAmount1,
         totalPotAmount2,
         setConnect,
-        setAmount,
+        setAmount1,
+        setAmount2,
         setToggled,
         handleApprove,
         handleBet,

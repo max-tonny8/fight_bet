@@ -4,16 +4,29 @@ import Link from "next/link";
 import { useAppContext } from "@/context/AppContext";
 
 const GameItem = () => {
-  const { totalBetAmount1, totalBetAmount2 } = useAppContext();
+  const {
+    totalBetAmount1,
+    totalBetAmount2,
+    amount1,
+    amount2,
+    chainBalance,
+    setAmount1,
+    setAmount2,
+    handleApprove,
+    handleBet,
+  } = useAppContext();
 
   return (
     <div className="main">
       <FightItem
         src="/images/member1.png"
         name="Jack Paul"
-        amount={0}
+        amount={amount1}
         gain={0}
+        setAmount={setAmount1}
         totalBetAmount={totalBetAmount1}
+        handleApprove={handleApprove}
+        handleBet={handleBet}
       />
       <div className="game-condition">
         <h2>VS</h2>
@@ -38,7 +51,8 @@ const GameItem = () => {
             </div>
           </div>
           <p className="balance">
-            Your USDC Balance: <span className="state-bold">11.31</span>
+            Your USDC Balance:{" "}
+            <span className="state-bold">{chainBalance}</span>
           </p>
           <Link href="">Contract Link</Link>
         </div>
@@ -46,9 +60,12 @@ const GameItem = () => {
       <FightItem
         src="/images/member2.png"
         name="Mike Tyson"
-        amount={100}
+        amount={amount2}
         gain={100}
+        setAmount={setAmount2}
         totalBetAmount={totalBetAmount1}
+        handleApprove={handleApprove}
+        handleBet={handleBet}
       />
       <p className="share-text">
         Share the site with fight enthusiasts to increase the pot

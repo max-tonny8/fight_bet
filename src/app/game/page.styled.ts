@@ -27,7 +27,7 @@ export const Wrapper = styled.main`
     top: -5%;
     left: 50%;
     transform: translate(-50%, 0%);
-    height: 780px;
+    height: 730px;
     background: linear-gradient(
       90deg,
       #44ff9a -0.55%,
@@ -192,7 +192,7 @@ export const Wrapper = styled.main`
 
   .game-condition h2 {
     font-size: 64px;
-    padding-top: 55px;
+    padding-top: 90px;
     padding-bottom: 40px;
   }
 
