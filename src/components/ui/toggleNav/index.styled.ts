@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
     color: #000;
     box-shadow: 2px 2px 2px 2px grey;
     gap: 35px;
+    z-index: 100;
   }
 
   @media (min-width: 920px) {
@@ -34,6 +35,7 @@ export const Wrapper = styled.div`
     position: absolute;
     align-items: center;
     right: 10%;
+    cursor: pointer;
   }
 
   .link-quest {

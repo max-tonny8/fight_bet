@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
 
   .hamburger {
     display: none;
+    cursor: pointer;
   }
 
   @media (max-width: 920px) {
@@ -28,6 +29,7 @@ export const Wrapper = styled.div`
 
     .hamburger {
       display: block !important;
+      cursor: pointer;
     }
   }
 `;

@@ -5,14 +5,49 @@ export const Wrapper = styled.main`
   flex-direction: column;
   width: auto;
   height: 100vh;
+  gap: 50px;
+
+  h2 {
+    text-align: center;
+    font-size: 38px;
+  }
+
+  .container {
+    background-color: #fff;
+    border-radius: 16px;
+    position: relative;
+    height: auto;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .origin-bg {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 730px;
+    background: linear-gradient(
+      90deg,
+      #44ff9a -0.55%,
+      #44b0ff 22.86%,
+      #8b44ff 48.36%,
+      #ff6644 73.33%,
+      #ebff70 99.34%
+    );
+    border-radius: 20px;
+    filter: blur(16px);
+    z-index: -1;
+  }
 
   @media (min-width: 1440px) {
     .container {
+      width: 1370px;
+    }
+
+    .origin-bg {
       width: 1440px;
-      height: calc(100vh - 65px);
-      display: flex;
-      margin: auto;
-      padding: 32px;
     }
 
     .share-text {
@@ -22,11 +57,11 @@ export const Wrapper = styled.main`
 
   @media (max-width: 1440px) {
     .container {
+      width: 1210px;
+    }
+
+    .origin-bg {
       width: 1280px;
-      height: auto;
-      display: flex;
-      margin: auto;
-      padding: 32px;
     }
 
     .share-text {
@@ -36,10 +71,24 @@ export const Wrapper = styled.main`
 
   @media (max-width: 1280px) {
     .container {
+      width: 880px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .main {
+      flex-direction: column;
+      gap: 32px !important;
+    }
+
+    .game-condition {
+      order: -1;
+    }
+
+    .origin-bg {
       width: 920px;
-      display: flex;
-      margin: auto;
-      padding: 32px;
+      top: -1.3%;
+      height: 103%;
     }
 
     .game-member {
@@ -50,10 +99,11 @@ export const Wrapper = styled.main`
 
   @media (max-width: 920px) {
     .container {
+      width: 738px;
+    }
+
+    .origin-bg {
       width: 768px;
-      display: flex;
-      margin: auto;
-      padding: 32px;
     }
 
     .share-text {
@@ -62,11 +112,16 @@ export const Wrapper = styled.main`
   }
 
   @media (max-width: 768px) {
+    .main {
+      padding: 50px 20px !important;
+    }
+
     .container {
+      width: 520px;
+    }
+
+    .origin-bg {
       width: 540px;
-      display: flex;
-      margin: auto;
-      padding: 32px;
     }
 
     .setting div:first-child {
@@ -78,31 +133,37 @@ export const Wrapper = styled.main`
     .main .game-condition h2 {
       font-size: 28px !important;
     }
+
+    .share-text {
+      text-align: center;
+    }
   }
 
   @media (max-width: 540px) {
     .container {
-      width: 375px;
-      display: flex;
-      margin: auto;
-      padding: 32px;
+      width: 355px;
     }
 
-    .share-text {
-      text-align: center;
+    .origin-bg {
+      width: 375px;
     }
 
     .main {
       padding: 25px 15px !important;
     }
+
+    .share-text {
+      bottom: 5px !important;
+    }
   }
 
   @media (max-width: 375px) {
     .container {
-      width: 360px;
-      display: flex;
-      margin: auto;
-      padding: 32px;
+      width: 335px;
+    }
+
+    .origin-bg {
+      width: 350px;
     }
 
     .game-condition .state .chain-part .desc {
@@ -113,14 +174,30 @@ export const Wrapper = styled.main`
   .main {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    box-shadow: 0 0 20px 20px lightblue;
-    padding: 40px 110px;
-    gap: 26px;
+    padding: 50px 80px;
+    gap: 8px;
+    border-radius: 18px;
+    background-color: #fff;
   }
 
   .main .game-condition {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .game-condition h2 {
+    font-size: 64px;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  .game-condition .account-state {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,19 +205,20 @@ export const Wrapper = styled.main`
     gap: 30px;
   }
 
-  .main .game-condition h2 {
-    font-size: 38px;
-  }
-
   .main .game-condition .state-bold {
     font-weight: 700;
   }
 
   .game-condition .state {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+  }
+
+  .game-condition .state p {
+    text-align: center;
   }
 
   .game-condition .state p:first-child span:last-child {
@@ -150,6 +228,7 @@ export const Wrapper = styled.main`
   .main .game-condition .state .led {
     position: absolute;
     border-radius: 50%;
+    top: 2px;
     width: 16px;
     height: 16px;
     background-color: green;

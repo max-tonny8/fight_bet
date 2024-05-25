@@ -2,21 +2,47 @@ import { Wrapper } from "./index.styled";
 import Image from "next/image";
 import InputBox from "../inputBox";
 import MainBtn from "../mainBtn";
+import { useAppContext } from "@/context/AppContext";
 
-const FightItem = ({ src, amount, gain, name }: FightItemType) => {
+const FightItem = ({
+  src,
+  gain,
+  name,
+  totalBetAmount,
+  amount,
+  setAmount,
+  handleApprove,
+  handleBet,
+}: FightItemType) => {
+  const { isApprove } = useAppContext();
+
   return (
     <Wrapper>
       <div className="game-control">
-        <Image src={src} alt="No image..." width={180} height={150} />
+        <div className="fighter-info">
+          <p className="fighter-name">{name}</p>
+          <Image src={src} alt="No image..." width={220} height={180} />
+        </div>
         <div className="setting">
-          <InputBox />
-          <MainBtn title="Approve USDC to place your bet" $width="290px" />
-          <MainBtn title={`Place Bet on ${name}`} $width="230px" />
+          <InputBox amount={amount} setAmount={setAmount} />
+          {!isApprove ? (
+            <MainBtn
+              title="Approve USDC to place your bet"
+              $width="290px"
+              onClick={() => handleApprove(name)}
+            />
+          ) : (
+            <MainBtn
+              title={`Place Bet on ${name}`}
+              $width="230px"
+              onClick={() => handleBet(name)}
+            />
+          )}
         </div>
       </div>
       <div className="bonus">
         <p>
-          Your total bet amount: <span>{`$${amount}`}</span>
+          Your total bet amount: <span>{`$${totalBetAmount}`}</span>
         </p>
         <p>
           Potential gains if you win: <span>{`$${gain}`}</span>

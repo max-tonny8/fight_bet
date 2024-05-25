@@ -11,7 +11,7 @@ export const Wrapper = styled.input`
   background-color: #fff;
   color: #000;
   text-align: center;
-  font-size: 13px;
+  font-size: 18px;
   font-family: sans-serif;
   font-weight: 400;
 `;
