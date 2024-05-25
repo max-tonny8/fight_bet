@@ -5,6 +5,12 @@ export const Wrapper = styled.main`
   flex-direction: column;
   width: auto;
   height: 100vh;
+  gap: 50px;
+
+  h2 {
+    text-align: center;
+    font-size: 38px;
+  }
 
   .container {
     background-color: #fff;
@@ -12,7 +18,8 @@ export const Wrapper = styled.main`
     position: relative;
     height: auto;
     display: flex;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .origin-bg {
@@ -20,7 +27,7 @@ export const Wrapper = styled.main`
     top: -5%;
     left: 50%;
     transform: translate(-50%, 0%);
-    height: 725px;
+    height: 780px;
     background: linear-gradient(
       90deg,
       #44ff9a -0.55%,
@@ -30,7 +37,7 @@ export const Wrapper = styled.main`
       #ebff70 99.34%
     );
     border-radius: 20px;
-    filter: blur(10px);
+    filter: blur(16px);
     z-index: -1;
   }
 
@@ -146,7 +153,7 @@ export const Wrapper = styled.main`
     }
 
     .share-text {
-      bottom: 5px;
+      bottom: 5px !important;
     }
   }
 
@@ -180,12 +187,22 @@ export const Wrapper = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 14px;
     gap: 30px;
   }
 
-  .main .game-condition h2 {
-    font-size: 38px;
+  .game-condition h2 {
+    font-size: 64px;
+    padding-top: 55px;
+    padding-bottom: 40px;
+  }
+
+  .game-condition .account-state {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    gap: 30px;
   }
 
   .main .game-condition .state-bold {
@@ -211,6 +228,7 @@ export const Wrapper = styled.main`
   .main .game-condition .state .led {
     position: absolute;
     border-radius: 50%;
+    top: 2px;
     width: 16px;
     height: 16px;
     background-color: green;

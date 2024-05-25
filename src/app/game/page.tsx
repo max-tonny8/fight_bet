@@ -9,6 +9,7 @@ const Game = () => {
   return (
     <Wrapper>
       <Navbar />
+      <h2>Fight Cash</h2>
       <div className="container">
         <div className="origin-bg"></div>
         <GameItem />

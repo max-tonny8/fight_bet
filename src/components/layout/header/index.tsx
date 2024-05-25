@@ -8,7 +8,7 @@ import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Navbar = () => {
-  const { isToggled, setToggled } = useAppContext();
+  const { isToggled, setToggled, setConnect } = useAppContext();
 
   return (
     <>
@@ -55,6 +55,8 @@ const Navbar = () => {
                           onClick={openConnectModal}
                         />
                       );
+                    } else {
+                      setConnect(connected);
                     }
 
                     if (chain.unsupported) {
