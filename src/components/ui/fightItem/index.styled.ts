@@ -17,6 +17,18 @@ export const Wrapper = styled.div`
     gap: 30px;
   }
 
+  .fighter-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .fighter-info .fighter-name {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
   .game-control .setting {
     width: 100%;
     display: flex;
@@ -39,6 +51,10 @@ export const Wrapper = styled.div`
 
     .bonus p {
       text-align: center;
+    }
+
+    .fighter-info .fighter-name {
+      font-size: 18px;
     }
   }
 

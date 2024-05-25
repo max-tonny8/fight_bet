@@ -11,6 +11,7 @@ export const Wrapper = styled.div<{ $width: string }>`
     border-radius: 22px;
     background-color: #000;
     color: #fff;
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
