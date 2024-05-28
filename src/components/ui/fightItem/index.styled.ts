@@ -64,6 +64,13 @@ export const Wrapper = styled.div`
     }
   }
 
+  .member-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
   .bonus span {
     font-weight: 700;
   }

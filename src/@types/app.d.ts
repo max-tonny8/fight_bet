@@ -1,22 +1,14 @@
 interface AppContextType {
   isToggled: boolean;
-  amount1: number | undefined;
-  amount2: number | undefined;
-  isApprove1: boolean;
-  isApprove2: boolean;
-  gain1: number;
-  gain2: number;
-  totalBetAmount1: number;
-  totalBetAmount2: number;
   chainBalance: number;
-  totalPotAmount1: number;
-  totalPotAmount2: number;
+  gameContract: ethers.Contract | null;
+  usdcContract: ethers.Contract | null;
+  wallet: ethers.Contract;
+  isConnect: boolean;
+  getBalance: () => void;
   setConnect: (state: boolean) => void;
-  setAmount1: (state: number) => void;
-  setAmount2: (state: number) => void;
+  setBalance: (state: number) => void;
   setToggled: (state: boolean) => void;
-  handleApprove: (state: string) => void;
-  handleBet: (state: string) => void;
 }
 interface HeaderBtnType {
   avatar?: React.ReactNode;
@@ -27,14 +19,20 @@ interface HeaderBtnType {
 
 interface FightItemType {
   src: string;
-  amount: number | undefined;
   gain: number;
   name: string;
+  num: number;
   totalBetAmount: number;
-  amount: number;
-  isApprove: boolean;
   chainBalance: number;
-  setAmount: (state: number) => void;
-  handleApprove: (state: string) => void;
-  handleBet: (state: string) => void;
+  getInitialData: () => void;
+  getTotalBetData: () => void;
+  getGain: () => void;
 }
+
+type Compete = {
+  name: string;
+  src: string;
+  num: number;
+};
+
+type CompeteList = Compete[];

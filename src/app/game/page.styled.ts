@@ -24,10 +24,10 @@ export const Wrapper = styled.main`
 
   .origin-bg {
     position: absolute;
-    top: -5%;
+    top: -2.5%;
     left: 50%;
     transform: translate(-50%, 0%);
-    height: 730px;
+    height: 105%;
     background: linear-gradient(
       90deg,
       #44ff9a -0.55%,
@@ -227,71 +227,16 @@ export const Wrapper = styled.main`
     font-size: 11px;
   }
 
-  .main .fighter-part {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .main .game-condition {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .game-condition h2 {
-    font-size: 64px;
-    padding-top: 30px;
-    padding-bottom: 80px;
-  }
-
-  .game-condition .account-state {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 14px;
-    gap: 30px;
-  }
-
-  .main .state-bold {
+  .state-bold {
     font-weight: 700;
   }
 
-  .game-condition .state {
-    position: relative;
+  .compete-part {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-  }
-
-  .game-condition .vs-amount {
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .game-condition .vs-amount p {
-    text-align: center;
-  }
-
-  hr {
-    width: 100%;
-    border-color: #efeded4d;
-  }
-
-  .game-member {
-    width: 85%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 40px;
   }
 
   .share-text {

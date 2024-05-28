@@ -1,21 +1,139 @@
+import React, { useState } from "react";
+import { ethers } from "ethers";
 import { Wrapper } from "./index.styled";
 import Image from "next/image";
 import InputBox from "../inputBox";
 import MainBtn from "../mainBtn";
 import { useAppContext } from "@/context/AppContext";
+import { Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FightItem = ({
   src,
   gain,
+  num,
   name,
   totalBetAmount,
-  amount,
-  isApprove,
   chainBalance,
-  setAmount,
-  handleApprove,
-  handleBet,
+  getInitialData,
+  getTotalBetData,
+  getGain,
 }: FightItemType) => {
+  const [amount, setAmount] = useState<number>(0);
+  const [isApprove, setApprove] = useState<boolean>(true);
+
+  const { getBalance, usdcContract, gameContract, wallet } = useAppContext();
+
+  /**
+   * @function handleApprove
+   * @param name
+   * @returns none
+   */
+  const handleApprove = async (name: string) => {
+    if (!usdcContract) return;
+
+    try {
+      const approveResult: any = await usdcContract.approve(
+        wallet.address,
+        ethers.utils.parseUnits(amount.toString(), 9)
+      );
+      const receipt: boolean = await approveResult.wait();
+      if (receipt) {
+        setApprove(!isApprove);
+        setTimeout(() => {
+          getInitialData();
+          getTotalBetData();
+          getGain();
+        }, 1000);
+      } else {
+        toast("🔊 This transaction is failed!", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    } catch (error: any) {
+      if (error) {
+        toast("🔊 Let's try again transaction!", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    }
+  };
+
+  /**
+   * @function handlebet
+   * @param name
+   * @returns none
+   */
+  const handleBet = async (name: string) => {
+    if (!gameContract) return;
+
+    try {
+      const betResult = await gameContract.placeBet(num, amount!);
+      const receipt: boolean = await betResult.wait();
+
+      if (receipt) {
+        setApprove(!isApprove);
+        setTimeout(() => {
+          getInitialData();
+          getBalance();
+          getTotalBetData();
+          getGain();
+        }, 1000);
+      } else {
+        toast("🔊 This transaction is failed!", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    } catch (error: any) {
+      if (error) {
+        toast("🔊 Let's try again transaction!", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    }
+  };
+
+  /**
+   * @name handleWithDraw
+   * @param name
+   * @returns none
+   */
+  const handleWithDraw = () => {
+    console.log("Click the With Draw!");
+  };
+
   return (
     <Wrapper>
       <div className="game-control">
@@ -36,11 +154,18 @@ const FightItem = ({
               onClick={() => handleApprove(name)}
             />
           ) : (
-            <MainBtn
-              title={`Place Bet on ${name}`}
-              $width="230px"
-              onClick={() => handleBet(name)}
-            />
+            <div className="member-btn">
+              <MainBtn
+                title={`Place Bet on ${name}`}
+                $width="230px"
+                onClick={() => handleBet(name)}
+              />
+              <MainBtn
+                title={`WithDraw ${name}`}
+                $width="230px"
+                onClick={() => handleWithDraw}
+              />
+            </div>
           )}
         </div>
       </div>
