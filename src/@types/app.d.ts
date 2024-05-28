@@ -1,17 +1,11 @@
 interface AppContextType {
   isToggled: boolean;
-<<<<<<< HEAD
   amount1: number | undefined;
   amount2: number | undefined;
   isApprove1: boolean;
   isApprove2: boolean;
   gain1: number;
   gain2: number;
-=======
-  amount1: number;
-  amount2: number;
-  isApprove: boolean;
->>>>>>> 4ae561449548d984e31e9680af9a960e75dbe48e
   totalBetAmount1: number;
   totalBetAmount2: number;
   chainBalance: number;
