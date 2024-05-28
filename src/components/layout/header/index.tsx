@@ -1,7 +1,7 @@
 import { Wrapper } from "./index.styled";
 import Link from "next/link";
 import HeaderBtn from "@/components/ui/headerBtn";
-import { HiChevronDown, HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineMenu } from "react-icons/hi";
 import { useAppContext } from "@/context/AppContext";
 import ToggleNav from "@/components/ui/toggleNav";
 import Image from "next/image";

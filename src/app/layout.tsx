@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AppProvider } from "@/context/AppContext";
 import RainbowProvider from "@/context/Provider";
+import ContractProvider from "@/context/ContracProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <RainbowProvider>
-          <AppProvider>{children}</AppProvider>
-        </RainbowProvider>
+        <ContractProvider>
+          <RainbowProvider>
+            <AppProvider>{children}</AppProvider>
+          </RainbowProvider>
+        </ContractProvider>
       </body>
     </html>
   );

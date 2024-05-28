@@ -10,12 +10,12 @@ const FightItem = ({
   name,
   totalBetAmount,
   amount,
+  isApprove,
+  chainBalance,
   setAmount,
   handleApprove,
   handleBet,
 }: FightItemType) => {
-  const { isApprove } = useAppContext();
-
   return (
     <Wrapper>
       <div className="game-control">
@@ -24,8 +24,12 @@ const FightItem = ({
           <Image src={src} alt="No image..." width={220} height={180} />
         </div>
         <div className="setting">
-          <InputBox amount={amount} setAmount={setAmount} />
-          {!isApprove ? (
+          <InputBox
+            amount={amount}
+            setAmount={setAmount}
+            chainBalance={chainBalance}
+          />
+          {isApprove ? (
             <MainBtn
               title="Approve USDC to place your bet"
               $width="290px"

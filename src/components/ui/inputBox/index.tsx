@@ -3,9 +3,11 @@ import { Wrapper } from "./index.styled";
 
 const InputBtn = ({
   amount,
+  chainBalance,
   setAmount,
 }: {
-  amount: number;
+  amount: number | undefined;
+  chainBalance: number;
   setAmount: (state: number) => void;
 }) => {
   const handleInputChange = (event: any) => {
@@ -16,6 +18,8 @@ const InputBtn = ({
     <Wrapper
       type="number"
       placeholder="0"
+      min="0"
+      max={chainBalance}
       value={amount}
       onChange={handleInputChange}
     />

@@ -5,28 +5,35 @@ import { useAppContext } from "@/context/AppContext";
 
 const GameItem = () => {
   const {
+    totalPotAmount1,
+    totalPotAmount2,
     totalBetAmount1,
     totalBetAmount2,
     amount1,
     amount2,
     chainBalance,
+    isApprove1,
+    isApprove2,
+    gain1,
+    gain2,
     setAmount1,
     setAmount2,
     handleApprove,
     handleBet,
   } = useAppContext();
-
   return (
     <div className="main">
       <FightItem
         src="/images/member1.png"
         name="Jack Paul"
         amount={amount1}
-        gain={0}
+        isApprove={isApprove1}
+        chainBalance={chainBalance}
         setAmount={setAmount1}
         totalBetAmount={totalBetAmount1}
         handleApprove={handleApprove}
         handleBet={handleBet}
+        gain={gain1}
       />
       <div className="game-condition">
         <h2>VS</h2>
@@ -45,8 +52,8 @@ const GameItem = () => {
             <div className="vs-amount">
               <p>Total Pot Amount:</p>
               <p>
-                <span className="state-bold">${totalBetAmount1}</span> vs{" "}
-                <span className="state-bold">${totalBetAmount2}</span>
+                <span className="state-bold">${totalPotAmount1}</span> vs{" "}
+                <span className="state-bold">${totalPotAmount2}</span>
               </p>
             </div>
           </div>
@@ -61,11 +68,13 @@ const GameItem = () => {
         src="/images/member2.png"
         name="Mike Tyson"
         amount={amount2}
-        gain={100}
+        chainBalance={chainBalance}
+        isApprove={isApprove2}
         setAmount={setAmount2}
-        totalBetAmount={totalBetAmount1}
+        totalBetAmount={totalBetAmount2}
         handleApprove={handleApprove}
         handleBet={handleBet}
+        gain={gain2}
       />
       <p className="share-text">
         Share the site with fight enthusiasts to increase the pot
