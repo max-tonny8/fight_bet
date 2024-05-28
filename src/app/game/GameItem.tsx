@@ -24,7 +24,7 @@ const GameItem = () => {
   return (
     <div className="main">
       <FightItem
-        src="/images/member1.png"
+        src="https://lezetomedia.s3.us-east-2.amazonaws.com/wp-content/uploads/2020/05/09191713/Conor-McGregor-Net-Worth-scaled.jpg"
         name="Jack Paul"
         amount={amount1}
         isApprove={isApprove1}
@@ -65,7 +65,7 @@ const GameItem = () => {
         </div>
       </div>
       <FightItem
-        src="/images/member2.png"
+        src="https://mmajunkie.usatoday.com/wp-content/uploads/sites/91/2022/05/michael-chandler-ufc-274-ceremonial-weigh-ins.jpg"
         name="Mike Tyson"
         amount={amount2}
         chainBalance={chainBalance}
