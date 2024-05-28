@@ -76,13 +76,17 @@ export const Wrapper = styled.main`
       margin-bottom: 40px;
     }
 
-    .main {
+    .fighter-part {
       flex-direction: column;
-      gap: 32px !important;
+      gap: 40px;
     }
 
     .game-condition {
       order: -1;
+    }
+
+    .game-condition h2 {
+      padding: 0 !important;
     }
 
     .origin-bg {
@@ -131,7 +135,7 @@ export const Wrapper = styled.main`
     }
 
     .main .game-condition h2 {
-      font-size: 28px !important;
+      font-size: 44px !important;
     }
 
     .share-text {
@@ -174,16 +178,64 @@ export const Wrapper = styled.main`
   .main {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
     padding: 50px 80px;
-    gap: 8px;
+    gap: 20px;
     border-radius: 18px;
     background-color: #fff;
   }
+  .main .account-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .main .account-part .state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .main .account-part .state p {
+    text-align: center;
+  }
+
+  .main .account-part .state p:first-child span:last-child {
+    padding-left: 22px;
+  }
+
+  .main .account-part .state .led {
+    position: absolute;
+    border-radius: 50%;
+    top: 53px;
+    width: 16px;
+    height: 16px;
+    background-color: green;
+    margin-left: 3px;
+  }
+
+  .main .account-part .state .chain-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main .account-part .state .chain-part .desc {
+    font-size: 11px;
+  }
+
+  .main .fighter-part {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .main .game-condition {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -192,8 +244,8 @@ export const Wrapper = styled.main`
 
   .game-condition h2 {
     font-size: 64px;
-    padding-top: 90px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 80px;
   }
 
   .game-condition .account-state {
@@ -205,7 +257,7 @@ export const Wrapper = styled.main`
     gap: 30px;
   }
 
-  .main .game-condition .state-bold {
+  .main .state-bold {
     font-weight: 700;
   }
 
@@ -217,39 +269,16 @@ export const Wrapper = styled.main`
     gap: 20px;
   }
 
-  .game-condition .state p {
-    text-align: center;
-  }
-
-  .game-condition .state p:first-child span:last-child {
-    padding-left: 22px;
-  }
-
-  .main .game-condition .state .led {
-    position: absolute;
-    border-radius: 50%;
-    top: 2px;
-    width: 16px;
-    height: 16px;
-    background-color: green;
-    margin-left: 3px;
-  }
-
-  .game-condition .state .chain-part {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .game-condition .state .chain-part .desc {
-    font-size: 11px;
-  }
-
   .game-condition .vs-amount {
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+  }
+
+  .game-condition .vs-amount p {
+    text-align: center;
   }
 
   hr {

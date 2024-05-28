@@ -9,6 +9,12 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: [
+      "lezetomedia.s3.us-east-2.amazonaws.com",
+      "mmajunkie.usatoday.com",
+    ],
+  },
 };
 
 export default nextConfig;
