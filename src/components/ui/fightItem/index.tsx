@@ -130,8 +130,48 @@ const FightItem = ({
    * @param name
    * @returns none
    */
-  const handleWithDraw = () => {
+  const handleWithDraw = async () => {
     console.log("Click the With Draw!");
+    try {
+      const betResult = await gameContract.withdrawReward();
+      const receipt: boolean = await betResult.wait();
+
+      if (receipt) {
+        setApprove(!isApprove);
+        setTimeout(() => {
+          getInitialData();
+          getBalance();
+          getTotalBetData();
+          getGain();
+        }, 1000);
+      } else {
+        toast("🔊 This transaction is failed!", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    } catch (error: any) {
+      if (error) {
+        toast("🔊 Let's try again transaction!", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    }
   };
 
   return (
@@ -154,19 +194,17 @@ const FightItem = ({
               onClick={() => handleApprove(name)}
             />
           ) : (
-            <div className="member-btn">
-              <MainBtn
-                title={`Place Bet on ${name}`}
-                $width="230px"
-                onClick={() => handleBet(name)}
-              />
-              <MainBtn
-                title={`WithDraw ${name}`}
-                $width="230px"
-                onClick={() => handleWithDraw}
-              />
-            </div>
+            <MainBtn
+              title={`Place Bet on ${name}`}
+              $width="230px"
+              onClick={() => handleBet(name)}
+            />
           )}
+          <MainBtn
+            title={`WithDraw ${name}`}
+            $width="230px"
+            onClick={() => handleWithDraw}
+          />
         </div>
       </div>
       <div className="bonus">
