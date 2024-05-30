@@ -8,7 +8,8 @@ import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Navbar = () => {
-  const { isToggled, setToggled, setConnect } = useAppContext();
+  const { isToggled, setToggled, setConnect, setChainName, setChainID } =
+    useAppContext();
 
   return (
     <>
@@ -57,6 +58,8 @@ const Navbar = () => {
                       );
                     } else {
                       setConnect(connected);
+                      setChainName(chain.name);
+                      setChainID(chain.id);
                     }
 
                     if (chain.unsupported) {
@@ -81,7 +84,7 @@ const Navbar = () => {
                               />
                             )
                           }
-                          title={chain.hasIcon && chain.name}
+                          title={chain.name}
                           onClick={openChainModal}
                         />
                         <HeaderBtn

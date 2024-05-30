@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAppContext } from "@/context/AppContext";
 import CompeteItem from "@/components/ui/compete";
+import { useContractContext } from "@/context/ContracProvider";
 
 const competesList: CompeteList[] = [
   [
@@ -43,7 +44,9 @@ const competesList: CompeteList[] = [
 
 const GameItem: React.FC = () => {
   const [chainBalance, setBalance] = useState<number>(0);
-  const { wallet, usdcContract, isConnect } = useAppContext();
+
+  const { wallet, usdcContract, isConnect, chainID, chainName } =
+    useAppContext();
 
   useEffect(() => {
     if (wallet) {
@@ -60,7 +63,6 @@ const GameItem: React.FC = () => {
    */
   const getBalance = async () => {
     if (!usdcContract) return;
-    console.log(wallet);
 
     const chainResult = await usdcContract.balanceOf(wallet!);
     setBalance(chainResult.toNumber());
@@ -72,12 +74,15 @@ const GameItem: React.FC = () => {
         <div className="state">
           <p>
             Account status: <span className="led"></span>
-            <span className="state-bold">Connected</span>
+            <span className="state-bold">
+              {isConnect ? "Connected" : "Disconnected"}
+            </span>
           </p>
           <div className="chain-part">
             <p className="desc">{`[ Switch To Polygon Network  if you haven't ]`}</p>
             <p>
-              Chain: <span className="state-bold">{`Polygon(137)`}</span>
+              Chain:{" "}
+              <span className="state-bold">{`${chainName}(${chainID})`}</span>
             </p>
           </div>
           <p className="balance">

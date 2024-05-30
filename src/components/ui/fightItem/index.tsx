@@ -36,7 +36,7 @@ const FightItem = ({
     try {
       const approveResult: any = await usdcContract.approve(
         wallet!,
-        ethers.utils.parseUnits(amount.toString(), 9)
+        amount * 10 ** 6
       );
       const receipt: boolean = await approveResult.wait();
       if (receipt) {

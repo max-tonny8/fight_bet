@@ -10,7 +10,6 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [isToggled, setToggled] = useState<boolean>(false);
-  // const [chainBalance, setBalance] = useState<number>(0);
 
   const { provider, signer, isConnect, setConnect } = useContractContext();
 
@@ -21,6 +20,8 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     null
   );
   const [wallet, setAddress] = useState<string | null>(null);
+  const [chainID, setChainID] = useState<number>(137);
+  const [chainName, setChainName] = useState<string | undefined>("Polygon");
 
   useEffect(() => {
     if (signer && provider) {
@@ -52,40 +53,20 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [signer, provider]);
 
-  // useEffect(() => {
-  //   if (wallet) {
-  //     getBalance();
-  //   } else {
-  //     setBalance(0);
-  //   }
-  // }, [isConnect, usdcContract]);
-
-  // /**
-  //  * @function getBalance
-  //  * @param adress: user
-  //  * @returns none
-  //  */
-  // const getBalance = async () => {
-  //   if (!usdcContract) return;
-  //   console.log(wallet);
-
-  //   const chainResult = await usdcContract.balanceOf(wallet!);
-  //   setBalance(chainResult.toNumber());
-  // };
-
   return (
     <AppContext.Provider
       value={{
         isToggled,
-        // chainBalance,
         gameContract,
         usdcContract,
         wallet,
+        chainID,
         isConnect,
-        // getBalance,
+        chainName,
+        setChainName,
+        setChainID,
         setConnect,
         setToggled,
-        // setBalance,
       }}
     >
       {children}

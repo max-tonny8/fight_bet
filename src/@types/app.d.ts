@@ -1,14 +1,15 @@
 interface AppContextType {
   isToggled: boolean;
-  // chainBalance: number;
   gameContract: ethers.Contract | null;
   usdcContract: ethers.Contract | null;
   wallet: string | null;
   isConnect: boolean;
-  // getBalance: () => void;
+  chainID: number;
+  chainName: string | undefined;
+  setChainID: (state: number) => void;
   setConnect: (state: boolean) => void;
-  // setBalance: (state: number) => void;
   setToggled: (state: boolean) => void;
+  setChainName: (state: string | undefined) => void;
 }
 interface HeaderBtnType {
   avatar?: React.ReactNode;
