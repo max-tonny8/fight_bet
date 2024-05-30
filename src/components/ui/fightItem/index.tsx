@@ -92,6 +92,7 @@ const FightItem = ({
         getBalance();
         getTotalBetData();
         getGain();
+        setAmount(0);
       } else {
         toast("🔊 This transaction is failed!", {
           position: "top-left",
