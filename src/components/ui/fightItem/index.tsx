@@ -18,11 +18,12 @@ const FightItem = ({
   getInitialData,
   getTotalBetData,
   getGain,
+  getBalance,
 }: FightItemType) => {
   const [amount, setAmount] = useState<number>(0);
   const [isApprove, setApprove] = useState<boolean>(true);
 
-  const { getBalance, usdcContract, gameContract, wallet } = useAppContext();
+  const { usdcContract, gameContract, wallet } = useAppContext();
 
   /**
    * @function handleApprove
@@ -34,7 +35,7 @@ const FightItem = ({
 
     try {
       const approveResult: any = await usdcContract.approve(
-        wallet.address,
+        wallet!,
         ethers.utils.parseUnits(amount.toString(), 9)
       );
       const receipt: boolean = await approveResult.wait();

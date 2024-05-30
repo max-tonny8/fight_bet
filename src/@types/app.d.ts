@@ -1,13 +1,13 @@
 interface AppContextType {
   isToggled: boolean;
-  chainBalance: number;
+  // chainBalance: number;
   gameContract: ethers.Contract | null;
   usdcContract: ethers.Contract | null;
-  wallet: ethers.Contract;
+  wallet: string | null;
   isConnect: boolean;
-  getBalance: () => void;
+  // getBalance: () => void;
   setConnect: (state: boolean) => void;
-  setBalance: (state: number) => void;
+  // setBalance: (state: number) => void;
   setToggled: (state: boolean) => void;
 }
 interface HeaderBtnType {
@@ -27,6 +27,7 @@ interface FightItemType {
   getInitialData: () => void;
   getTotalBetData: () => void;
   getGain: () => void;
+  getBalance: () => void;
 }
 
 type Compete = {

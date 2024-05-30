@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAppContext } from "@/context/AppContext";
 import CompeteItem from "@/components/ui/compete";
 
@@ -42,7 +42,29 @@ const competesList: CompeteList[] = [
 ];
 
 const GameItem: React.FC = () => {
-  const { chainBalance } = useAppContext();
+  const [chainBalance, setBalance] = useState<number>(0);
+  const { wallet, usdcContract, isConnect } = useAppContext();
+
+  useEffect(() => {
+    if (wallet) {
+      getBalance();
+    } else {
+      setBalance(0);
+    }
+  }, [isConnect, wallet, usdcContract]);
+
+  /**
+   * @function getBalance
+   * @param adress: user
+   * @returns none
+   */
+  const getBalance = async () => {
+    if (!usdcContract) return;
+    console.log(wallet);
+
+    const chainResult = await usdcContract.balanceOf(wallet!);
+    setBalance(chainResult.toNumber());
+  };
 
   return (
     <div className="main">
@@ -67,7 +89,12 @@ const GameItem: React.FC = () => {
       <div className="compete-part">
         {competesList.map((item: Compete[], index: number) => (
           // @ts-ignore
-          <CompeteItem data={item} key={index} />
+          <CompeteItem
+            data={item}
+            key={index}
+            chainBalance={chainBalance}
+            getBalance={getBalance}
+          />
         ))}
       </div>
       <p className="share-text">

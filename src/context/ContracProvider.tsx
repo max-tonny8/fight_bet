@@ -15,6 +15,8 @@ import "react-toastify/dist/ReactToastify.css";
 interface ContractContextType {
   provider: ethers.providers.Web3Provider | undefined;
   signer: ethers.Signer | null;
+  isConnect: boolean;
+  setConnect: (state: boolean) => void;
 }
 
 // Create the context
@@ -27,15 +29,17 @@ const ContractProvider = ({ children }: { children: ReactNode }) => {
     ethers.providers.Web3Provider | undefined
   >(undefined);
   const [signer, setSigner] = useState<ethers.Signer | null>(null);
+  const [isConnect, setConnect] = useState<boolean>(false);
 
   useEffect(() => {
     const initialFunc = async () => {
       if (typeof window !== "undefined" && (window as any).ethereum) {
         try {
-          const newSignerAddr = (await window.ethereum.request({
-            method: "eth_requestAccounts",
-          })) as Array<string>;
-
+          if (!isConnect) {
+            const newSignerAddr = (await window.ethereum.request({
+              method: "eth_requestAccounts",
+            })) as Array<string>;
+          }
           const web3Provider = new ethers.providers.Web3Provider(
             (window as any).ethereum
           );
@@ -74,7 +78,9 @@ const ContractProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <ContractContext.Provider value={{ provider, signer }}>
+    <ContractContext.Provider
+      value={{ provider, signer, isConnect, setConnect }}
+    >
       {children}
     </ContractContext.Provider>
   );

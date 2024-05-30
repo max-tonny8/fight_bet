@@ -4,9 +4,15 @@ import FightItem from "@/components/ui/fightItem";
 import Link from "next/link";
 import { useAppContext } from "@/context/AppContext";
 
-const CompeteItem = (data: CompeteList) => {
-  const memberList: any = Object.values(data)[0];
-
+const CompeteItem = ({
+  data,
+  chainBalance,
+  getBalance,
+}: {
+  data: CompeteList;
+  chainBalance: number;
+  getBalance: () => void;
+}) => {
   const [gain1, setGain1] = useState<number>(0);
   const [gain2, setGain2] = useState<number>(0);
   const [totalPotAmount1, setTotalPotAmount1] = useState<number>(0);
@@ -14,19 +20,15 @@ const CompeteItem = (data: CompeteList) => {
   const [totalBetAmount1, setTotalBetAmount1] = useState<number>(0);
   const [totalBetAmount2, setTotalBetAmount2] = useState<number>(0);
 
-  const { chainBalance, gameContract, usdcContract, wallet, isConnect } =
-    useAppContext();
+  const { gameContract, wallet, isConnect } = useAppContext();
 
   useEffect(() => {
-    getInitialData();
-  }, [isConnect]);
-
-  useEffect(() => {
-    if (gameContract && usdcContract) {
+    if (wallet) {
       getTotalBetData();
       getGain();
     }
-  }, [gameContract, usdcContract, totalBetAmount1, totalBetAmount2]);
+    getInitialData();
+  }, [isConnect, wallet, totalBetAmount1, totalBetAmount2]);
 
   /**
    * @function getGain
@@ -37,15 +39,9 @@ const CompeteItem = (data: CompeteList) => {
   const getGain = async () => {
     if (!gameContract) return;
 
-    const gainResult1 = await gameContract.userBets(
-      wallet.address,
-      memberList[0].num
-    );
+    const gainResult1 = await gameContract.userBets(wallet!, data[0].num);
     setGain1(gainResult1.toNumber());
-    const gainResult2 = await gameContract.userBets(
-      wallet.address,
-      memberList[1].num
-    );
+    const gainResult2 = await gameContract.userBets(wallet!, data[1].num);
     setGain2(gainResult2.toNumber());
   };
 
@@ -58,15 +54,9 @@ const CompeteItem = (data: CompeteList) => {
   const getTotalBetData = async () => {
     if (!gameContract) return;
 
-    const betResult1 = await gameContract.userBets(
-      wallet.address,
-      memberList[0].num
-    );
+    const betResult1 = await gameContract.userBets(wallet!, data[0].num);
     setTotalBetAmount1(betResult1.toNumber());
-    const betResult2 = await gameContract.userBets(
-      wallet.address,
-      memberList[1].num
-    );
+    const betResult2 = await gameContract.userBets(wallet!, data[1].num);
     setTotalBetAmount2(betResult2.toNumber());
   };
 
@@ -78,17 +68,17 @@ const CompeteItem = (data: CompeteList) => {
   const getInitialData = async () => {
     if (!gameContract) return;
 
-    const amountResult1 = await gameContract.totalBetAmount(memberList[0].num);
+    const amountResult1 = await gameContract.totalBetAmount(data[0].num);
     setTotalPotAmount1(amountResult1.toNumber());
-    const amountResult2 = await gameContract.totalBetAmount(memberList[1].num);
+    const amountResult2 = await gameContract.totalBetAmount(data[1].num);
     setTotalPotAmount2(amountResult2.toNumber());
   };
 
   return (
     <Wrapper className="fighter-part">
       <FightItem
-        src={memberList[0].src}
-        name={memberList[0].name}
+        src={data[0].src}
+        name={data[0].name}
         num={1}
         chainBalance={chainBalance}
         totalBetAmount={totalBetAmount1}
@@ -96,6 +86,7 @@ const CompeteItem = (data: CompeteList) => {
         getInitialData={getInitialData}
         getTotalBetData={getTotalBetData}
         getGain={getGain}
+        getBalance={getBalance}
       />
       <div className="game-condition">
         <h2>VS</h2>
@@ -111,8 +102,8 @@ const CompeteItem = (data: CompeteList) => {
         </div>
       </div>
       <FightItem
-        src={memberList[1].src}
-        name={memberList[1].name}
+        src={data[1].src}
+        name={data[1].name}
         num={2}
         chainBalance={chainBalance}
         totalBetAmount={totalBetAmount2}
@@ -120,6 +111,7 @@ const CompeteItem = (data: CompeteList) => {
         getInitialData={getInitialData}
         getTotalBetData={getTotalBetData}
         getGain={getGain}
+        getBalance={getBalance}
       />
     </Wrapper>
   );
