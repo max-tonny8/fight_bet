@@ -41,11 +41,9 @@ const FightItem = ({
       const receipt: boolean = await approveResult.wait();
       if (receipt) {
         setApprove(!isApprove);
-        setTimeout(() => {
-          getInitialData();
-          getTotalBetData();
-          getGain();
-        }, 1000);
+        getInitialData();
+        getTotalBetData();
+        getGain();
       } else {
         toast("🔊 This transaction is failed!", {
           position: "top-left",
@@ -90,12 +88,10 @@ const FightItem = ({
 
       if (receipt) {
         setApprove(!isApprove);
-        setTimeout(() => {
-          getInitialData();
-          getBalance();
-          getTotalBetData();
-          getGain();
-        }, 1000);
+        getInitialData();
+        getBalance();
+        getTotalBetData();
+        getGain();
       } else {
         toast("🔊 This transaction is failed!", {
           position: "top-left",
@@ -139,12 +135,10 @@ const FightItem = ({
 
       if (receipt) {
         setApprove(!isApprove);
-        setTimeout(() => {
-          getInitialData();
-          getBalance();
-          getTotalBetData();
-          getGain();
-        }, 1000);
+        getInitialData();
+        getBalance();
+        getTotalBetData();
+        getGain();
       } else {
         toast("🔊 This transaction is failed!", {
           position: "top-left",
