@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppContext } from "@/context/AppContext";
 import CompeteItem from "@/components/ui/compete";
-import { useContractContext } from "@/context/ContracProvider";
 
 const competesList: CompeteList[] = [
   [
