@@ -15,7 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 interface ContractContextType {
   provider: ethers.providers.Web3Provider | undefined;
   signer: ethers.Signer | null;
-  isConnect: boolean;
   setConnect: (state: boolean) => void;
 }
 
@@ -44,7 +43,7 @@ const ContractProvider = ({ children }: { children: ReactNode }) => {
             (window as any).ethereum
           );
           setProvider(web3Provider);
-          setSigner(web3Provider.getSigner());
+          setSigner(isConnect ? null : web3Provider.getSigner());
         } catch (error: any) {
           if (error) {
             toast("🔊 Let's progress wallet connect!", {
@@ -78,9 +77,7 @@ const ContractProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <ContractContext.Provider
-      value={{ provider, signer, isConnect, setConnect }}
-    >
+    <ContractContext.Provider value={{ provider, signer, setConnect }}>
       {children}
     </ContractContext.Provider>
   );

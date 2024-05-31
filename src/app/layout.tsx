@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import { AppProvider } from "@/context/AppContext";
 import RainbowProvider from "@/context/Provider";
 import ContractProvider from "@/context/ContracProvider";

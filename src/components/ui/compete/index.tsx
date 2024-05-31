@@ -3,6 +3,8 @@ import { Wrapper } from "./index.styled";
 import FightItem from "@/components/ui/fightItem";
 import Link from "next/link";
 import { useAppContext } from "@/context/AppContext";
+import { useAccount } from "wagmi";
+import { ToastContainer, Bounce, Zoom, toast } from "react-toastify";
 
 const CompeteItem = ({
   data,
@@ -20,15 +22,17 @@ const CompeteItem = ({
   const [totalBetAmount1, setTotalBetAmount1] = useState<number>(0);
   const [totalBetAmount2, setTotalBetAmount2] = useState<number>(0);
 
-  const { gameContract, wallet, isConnect } = useAppContext();
+  const { isConnected, address, chainId } = useAccount();
+
+  const { gameContract } = useAppContext();
 
   useEffect(() => {
-    if (wallet) {
+    if (isConnected && address) {
       getTotalBetData();
       getGain();
+      getInitialData();
     }
-    getInitialData();
-  }, [isConnect, wallet, totalBetAmount1, totalBetAmount2]);
+  }, [isConnected, address!, chainId, totalBetAmount1, totalBetAmount2]);
 
   /**
    * @function getGain
@@ -39,9 +43,9 @@ const CompeteItem = ({
   const getGain = async () => {
     if (!gameContract) return;
 
-    const gainResult1 = await gameContract.userBets(wallet!, data[0].num);
+    const gainResult1 = await gameContract.userBets(address!, data[0].num);
     setGain1(gainResult1.toNumber());
-    const gainResult2 = await gameContract.userBets(wallet!, data[1].num);
+    const gainResult2 = await gameContract.userBets(address!, data[1].num);
     setGain2(gainResult2.toNumber());
   };
 
@@ -54,9 +58,9 @@ const CompeteItem = ({
   const getTotalBetData = async () => {
     if (!gameContract) return;
 
-    const betResult1 = await gameContract.userBets(wallet!, data[0].num);
+    const betResult1 = await gameContract.userBets(address!, data[0].num);
     setTotalBetAmount1(betResult1.toNumber());
-    const betResult2 = await gameContract.userBets(wallet!, data[1].num);
+    const betResult2 = await gameContract.userBets(address!, data[1].num);
     setTotalBetAmount2(betResult2.toNumber());
   };
 
@@ -66,7 +70,7 @@ const CompeteItem = ({
    * @returns none
    */
   const getInitialData = async () => {
-    if (!gameContract) return;
+    if (!gameContract) return () => toast("Wow so easy!");
 
     const amountResult1 = await gameContract.totalBetAmount(data[0].num);
     setTotalPotAmount1(amountResult1.toNumber());
@@ -76,6 +80,19 @@ const CompeteItem = ({
 
   return (
     <Wrapper className="fighter-part">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <FightItem
         src={data[0].src}
         name={data[0].name}

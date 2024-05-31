@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ethers } from "ethers";
 import { Wrapper } from "./index.styled";
 import Image from "next/image";
 import InputBox from "../inputBox";
@@ -7,6 +6,7 @@ import MainBtn from "../mainBtn";
 import { useAppContext } from "@/context/AppContext";
 import { Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAccount } from "wagmi";
 
 const FightItem = ({
   src,
@@ -23,7 +23,9 @@ const FightItem = ({
   const [amount, setAmount] = useState<number>(0);
   const [isApprove, setApprove] = useState<boolean>(true);
 
-  const { usdcContract, gameContract, wallet } = useAppContext();
+  const { address } = useAccount();
+
+  const { usdcContract, gameContract } = useAppContext();
 
   /**
    * @function handleApprove
@@ -35,7 +37,7 @@ const FightItem = ({
 
     try {
       const approveResult: any = await usdcContract.approve(
-        wallet!,
+        address!,
         amount * 10 ** 6
       );
       const receipt: boolean = await approveResult.wait();

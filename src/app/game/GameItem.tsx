@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useAppContext } from "@/context/AppContext";
+import { useContractContext } from "@/context/ContracProvider";
 import CompeteItem from "@/components/ui/compete";
+import { useAccount } from "wagmi";
 
 const competesList: CompeteList[] = [
   [
@@ -44,16 +46,19 @@ const competesList: CompeteList[] = [
 const GameItem: React.FC = () => {
   const [chainBalance, setBalance] = useState<number>(0);
 
-  const { wallet, usdcContract, isConnect, chainID, chainName } =
-    useAppContext();
+  const { isConnected, address, chainId, chain } = useAccount();
+
+  const { usdcContract } = useAppContext();
+  const { setConnect } = useContractContext();
 
   useEffect(() => {
-    if (wallet) {
+    if (isConnected) {
       getBalance();
     } else {
       setBalance(0);
     }
-  }, [isConnect, wallet, usdcContract]);
+    setConnect(isConnected);
+  }, [isConnected, address!, chainId, usdcContract]);
 
   /**
    * @function getBalance
@@ -63,7 +68,7 @@ const GameItem: React.FC = () => {
   const getBalance = async () => {
     if (!usdcContract) return;
 
-    const chainResult = await usdcContract.balanceOf(wallet!);
+    const chainResult = await usdcContract.balanceOf(address!);
     setBalance(chainResult.toNumber());
   };
 
@@ -74,14 +79,16 @@ const GameItem: React.FC = () => {
           <p>
             Account status: <span className="led"></span>
             <span className="state-bold">
-              {isConnect ? "Connected" : "Disconnected"}
+              {isConnected ? "Connected" : "Disconnected"}
             </span>
           </p>
           <div className="chain-part">
             <p className="desc">{`[ Switch To Polygon Network  if you haven't ]`}</p>
             <p>
               Chain:{" "}
-              <span className="state-bold">{`${chainName}(${chainID})`}</span>
+              <span className="state-bold">{`${
+                chain == undefined ? "" : chain.name
+              }(${chainId})`}</span>
             </p>
           </div>
           <p className="balance">

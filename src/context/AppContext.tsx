@@ -11,7 +11,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [isToggled, setToggled] = useState<boolean>(false);
 
-  const { provider, signer, isConnect, setConnect } = useContractContext();
+  const { provider, signer } = useContractContext();
 
   const [gameContract, setGameContract] = useState<ethers.Contract | null>(
     null
@@ -19,23 +19,11 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [usdcContract, setUsdcContract] = useState<ethers.Contract | null>(
     null
   );
-  const [wallet, setAddress] = useState<string | null>(null);
-  const [chainID, setChainID] = useState<number>(137);
-  const [chainName, setChainName] = useState<string | undefined>("Polygon");
 
   useEffect(() => {
     if (signer && provider) {
       const contractAddress = "0x0a90D0FB21a9E7d0934f0A0475329f521d42Dd70"; // my contract address
       const contractToken = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; // my contract token
-
-      signer
-        .getAddress()
-        .then((address: string) => {
-          setAddress(address);
-        })
-        .catch((error) => {
-          console.error("Error getting address:", error);
-        });
 
       const gameContractInstance = new ethers.Contract(
         contractAddress,
@@ -59,13 +47,6 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
         isToggled,
         gameContract,
         usdcContract,
-        wallet,
-        chainID,
-        isConnect,
-        chainName,
-        setChainName,
-        setChainID,
-        setConnect,
         setToggled,
       }}
     >
