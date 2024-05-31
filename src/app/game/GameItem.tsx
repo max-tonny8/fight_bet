@@ -18,30 +18,30 @@ const competesList: CompeteList[] = [
       num: 2,
     },
   ],
-  [
-    {
-      name: "McGregor",
-      src: "https://lezetomedia.s3.us-east-2.amazonaws.com/wp-content/uploads/2020/05/09191713/Conor-McGregor-Net-Worth-scaled.jpg",
-      num: 3,
-    },
-    {
-      name: "Chandler",
-      src: "https://mmajunkie.usatoday.com/wp-content/uploads/sites/91/2022/05/michael-chandler-ufc-274-ceremonial-weigh-ins.jpg",
-      num: 4,
-    },
-  ],
-  [
-    {
-      name: "Alex",
-      src: "https://lezetomedia.s3.us-east-2.amazonaws.com/wp-content/uploads/2020/05/09191713/Conor-McGregor-Net-Worth-scaled.jpg",
-      num: 5,
-    },
-    {
-      name: "Mac",
-      src: "https://mmajunkie.usatoday.com/wp-content/uploads/sites/91/2022/05/michael-chandler-ufc-274-ceremonial-weigh-ins.jpg",
-      num: 6,
-    },
-  ],
+  // [
+  //   {
+  //     name: "McGregor",
+  //     src: "https://lezetomedia.s3.us-east-2.amazonaws.com/wp-content/uploads/2020/05/09191713/Conor-McGregor-Net-Worth-scaled.jpg",
+  //     num: 3,
+  //   },
+  //   {
+  //     name: "Chandler",
+  //     src: "https://mmajunkie.usatoday.com/wp-content/uploads/sites/91/2022/05/michael-chandler-ufc-274-ceremonial-weigh-ins.jpg",
+  //     num: 4,
+  //   },
+  // ],
+  // [
+  //   {
+  //     name: "Alex",
+  //     src: "https://lezetomedia.s3.us-east-2.amazonaws.com/wp-content/uploads/2020/05/09191713/Conor-McGregor-Net-Worth-scaled.jpg",
+  //     num: 5,
+  //   },
+  //   {
+  //     name: "Mac",
+  //     src: "https://mmajunkie.usatoday.com/wp-content/uploads/sites/91/2022/05/michael-chandler-ufc-274-ceremonial-weigh-ins.jpg",
+  //     num: 6,
+  //   },
+  // ],
 ];
 
 const GameItem: React.FC = () => {

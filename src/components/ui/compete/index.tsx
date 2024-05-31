@@ -32,7 +32,14 @@ const CompeteItem = ({
       getGain();
       getInitialData();
     }
-  }, [isConnected, address!, chainId, totalBetAmount1, totalBetAmount2]);
+  }, [
+    isConnected,
+    address!,
+    chainId,
+    totalBetAmount1,
+    totalBetAmount2,
+    gameContract,
+  ]);
 
   /**
    * @function getGain

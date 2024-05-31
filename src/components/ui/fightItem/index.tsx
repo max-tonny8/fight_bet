@@ -33,7 +33,7 @@ const FightItem = ({
    * @returns none
    */
   const handleApprove = async () => {
-    if (!usdcContract)
+    if (!usdcContract && !gameContract)
       return toast("🔊 Again connect wallet!", {
         position: "top-left",
         autoClose: 5000,
@@ -48,7 +48,7 @@ const FightItem = ({
 
     try {
       const approveResult: any = await usdcContract.approve(
-        address!,
+        gameContract.address,
         amount * 10 ** 6
       );
       const receipt: boolean = await approveResult.wait();
