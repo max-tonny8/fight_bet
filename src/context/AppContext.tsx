@@ -20,6 +20,18 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     null
   );
 
+  /**
+   * Amoy testnet
+   */
+  // "MyUSDCModule#MyUSDC": "0xA172F1DFcee0eB48D3C493d631b11cdA196255A6",
+  // "FightCashModule#FightCash": "0xb3FF18F2a8713477307b04107570d6670f02DE24"
+
+  /**
+   * Polygon mainnet
+   */
+  // const contractAddress = "0x0a90D0FB21a9E7d0934f0A0475329f521d42Dd70"; // my contract address
+  // const contractToken = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; // my contract token
+
   useEffect(() => {
     if (signer && provider) {
       const contractAddress = "0x0a90D0FB21a9E7d0934f0A0475329f521d42Dd70"; // my contract address

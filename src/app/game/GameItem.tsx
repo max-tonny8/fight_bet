@@ -3,6 +3,7 @@ import { useAppContext } from "@/context/AppContext";
 import { useContractContext } from "@/context/ContracProvider";
 import CompeteItem from "@/components/ui/compete";
 import { useAccount } from "wagmi";
+import { Zoom, toast } from "react-toastify";
 
 const competesList: CompeteList[] = [
   [
@@ -66,10 +67,21 @@ const GameItem: React.FC = () => {
    * @returns none
    */
   const getBalance = async () => {
-    if (!usdcContract) return;
+    if (!usdcContract)
+      return toast("🔊 Again connect wallet!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
 
     const chainResult = await usdcContract.balanceOf(address!);
-    setBalance(chainResult.toNumber());
+    setBalance(chainResult.toNumber() / 10 ** 6);
   };
 
   return (

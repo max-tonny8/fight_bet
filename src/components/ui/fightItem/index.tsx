@@ -32,8 +32,19 @@ const FightItem = ({
    * @param name
    * @returns none
    */
-  const handleApprove = async (name: string) => {
-    if (!usdcContract) return;
+  const handleApprove = async () => {
+    if (!usdcContract)
+      return toast("🔊 Again connect wallet!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
 
     try {
       const approveResult: any = await usdcContract.approve(
@@ -81,11 +92,22 @@ const FightItem = ({
    * @param name
    * @returns none
    */
-  const handleBet = async (name: string) => {
-    if (!gameContract) return;
+  const handleBet = async () => {
+    if (!gameContract)
+      return toast("🔊 Again connect wallet!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
 
     try {
-      const betResult = await gameContract.placeBet(num, amount!);
+      const betResult = await gameContract.placeBet(num, amount);
       const receipt: boolean = await betResult.wait();
 
       if (receipt) {
@@ -132,6 +154,19 @@ const FightItem = ({
    */
   const handleWithDraw = async () => {
     console.log("Click the With Draw!");
+    if (!gameContract)
+      return toast("🔊 Again connect wallet!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
+
     try {
       const betResult = await gameContract.withdrawReward();
       const receipt: boolean = await betResult.wait();
@@ -189,13 +224,13 @@ const FightItem = ({
             <MainBtn
               title="Approve USDC to place your bet"
               $width="290px"
-              onClick={() => handleApprove(name)}
+              onClick={handleApprove}
             />
           ) : (
             <MainBtn
               title={`Place Bet on ${name}`}
               $width="230px"
-              onClick={() => handleBet(name)}
+              onClick={handleBet}
             />
           )}
           <MainBtn
